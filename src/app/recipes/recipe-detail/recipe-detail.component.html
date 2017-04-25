@@ -1,8 +1,8 @@
-<div class="row">
-  <img src="{{selectedRecipe?.imagePath}}" alt="selected recipe image" class="img-fluid col">
+<div class="col mb-2 d-flex">
+  <img src="{{selectedRecipe?.imagePath}}" alt="selected recipe image" class="img-fluid rounded m-auto">
 </div>
-<div class="row">
-  <h1 class="col text-center">{{selectedRecipe?.name}}</h1>
+<div class="col">
+  <h1 class=" text-center">{{selectedRecipe?.name}}</h1>
   <div class="d-flex justify-content-around col">
     <button class="btn btn-success">To shopping list</button>
     <button class="btn btn-primary">Edit</button>
@@ -10,9 +10,5 @@
   </div>
 </div>
 <hr>
-<div class="row">
-  <p class="col">{{selectedRecipe?.description}}</p>
-</div>
-<div class="row">
-  <div class="col">Ingedients</div>
-</div>
+<p class="col">{{selectedRecipe?.description}}</p>
+<div class="col">Ingedients</div>
