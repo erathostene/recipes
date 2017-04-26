@@ -4,11 +4,13 @@
 <div class="col">
   <h1 class=" text-center">{{selectedRecipe?.name}}</h1>
   <div class="d-flex justify-content-around col">
-    <button class="btn btn-success">To shopping list</button>
+    <button class="btn btn-success" (click)="onAddToSL()">To shopping list</button>
     <button class="btn btn-primary">Edit</button>
     <button class="btn btn-danger">Delete</button>
   </div>
 </div>
 <hr>
 <p class="col">{{selectedRecipe?.description}}</p>
-<div class="col">Ingedients</div>
+<ul class="col">
+  <li class="list-group-item" *ngFor="let ingredient of selectedRecipe?.ingredients">{{ingredient.name}} ({{ingredient.amount}})</li>
+</ul>
