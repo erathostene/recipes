@@ -12,7 +12,8 @@ export class RecipeService {
     },
     {
       name: 'Summer salad', description: 'Okayish',
-      imagePath: 'https://www.bbcgoodfood.com/sites/default/files/recipe-collections/collection-image/2013/05/beetroot-feta-grain-salad.jpg',
+      imagePath: 'https://www.bbcgoodfood.com/sites/default/files/'
+      + 'recipe-collections/collection-image/2013/05/beetroot-feta-grain-salad.jpg',
       ingredients: []
     }
   ];
@@ -21,7 +22,19 @@ export class RecipeService {
   getRecipes() {
     return this.recipes;
   }
-  updateRecipe(recipe: Recipe) {
-    this.recipeUpdate.emit(recipe);
+  getRecipe(id: number) {
+    return this.recipes[id];
+  }
+  deleteRecipe(recipe: Recipe) {
+    this.recipes.splice(this.recipes.indexOf(recipe), 1);
+  }
+
+  addRecipe(recipe: Recipe) {
+    this.recipes.push(recipe);
+  }
+  editRecipe(oldRecipe: Recipe, newrecipe: Recipe) {
+    this.recipes[this.recipes.indexOf(oldRecipe)] = newrecipe;
   }
 }
+
+

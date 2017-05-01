@@ -4,6 +4,4 @@ import { Component } from '@angular/core';
   selector: 'rb-root',
   templateUrl: './app.component.html',
 })
-export class AppComponent {
-  title = 'rb works!';
-}
+export class AppComponent { }

@@ -1,0 +1,96 @@
+<div class="row">
+  <div class="col">
+    <form [formGroup]="recipeForm"
+          (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col">
+          <button type="submit"
+                  class="btn btn-success"
+                  [disabled]="!recipeForm.valid">Save</button>
+          <a class="btn btn-danger"
+             (click)="navigateBack()">Cancel</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col form-group">
+          <label for="name">Title</label>
+          <input type="text"
+                 id="name"
+                 class="form-control"
+                 formControlName="name">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col form-group">
+          <label for="inmage-url">Image Url</label>
+          <input type="text"
+                 id="image-url"
+                 class="form-control"
+                 formControlName="imagePath"
+                 #imageUrl>
+        </div>
+      </div>
+      <div class="row">
+        <div class="img col">
+          <img [src]="imageUrl.value"
+               alt=""
+               class="img-fluid rounded"></div>
+      </div>
+      <div class="row">
+        <div class="col form-group">
+          <label>Content</label>
+          <textarea name=""
+                    id="content"
+                    rows="10"
+                    class="form-control"
+                    rows="6"
+                    formControlName="description"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col "
+             formArrayName="ingredients">
+          <div class="list-group">
+            <div *ngFor="let ingredient of recipeForm.controls['ingredients'].controls; let i=index"
+                 formGroupName="{{i}}"
+                 class="row list-group-item">
+              <div class="col-sm-5">
+                <input type="text"
+                       class="form-control"
+                       formControlName="name">
+              </div>
+              <div class="col-sm-5">
+                <input type="number"
+                       class="form-control"
+                       formControlName="amount">
+              </div>
+              <div class="col-sm-2">
+                <button type="button"
+                        class="btn btn-danger"
+                        (click)="onRemoveItem(i)">X</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="row from-group">
+        <div class="col-5">
+          <input type="text"
+                 class=" form-control"
+                 #itemName>
+        </div>
+        <div class="col-5">
+          <input type="number"
+                 class=" form-control"
+                 #itemAmount>
+        </div>
+        <div class="col-2">
+          <button type="button"
+                  class=" btn btn-primary m-auto"
+                  (click)="onAddItem(itemName.value,itemAmount.value)">+</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

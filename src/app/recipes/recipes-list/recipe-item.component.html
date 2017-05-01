@@ -1,7 +1,11 @@
-<a href="#" class="list-group-item list-group-item-action my-1 flex-nowrap justify-content-between">
+<a [routerLink]="[recipeId]"
+   class="list-group-item list-group-item-action my-1 flex-nowrap justify-content-between"
+   routerLinkActive="active">
   <div>
     <h5 class="mb-2">{{recipe.name}}</h5>
     <p>{{recipe.description}}</p>
   </div>
-  <img class="rounded w-50" src="{{recipe.imagePath}}" alt="recipe image">
+  <img class="rounded w-25"
+       src="{{recipe.imagePath}}"
+       alt="recipe image">
 </a>

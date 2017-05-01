@@ -1,31 +1,51 @@
 <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
   <div class="container">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler navbar-toggler-right"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="#">Recipe Book</a>
+    <a class="navbar-brand"
+       [routerLink]="['/']">Recipe Book</a>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse"
+         id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Recipes</a>
+        <li class="nav-item"
+            routerLinkActive="active">
+          <a class="nav-link"
+             [routerLink]="['/recipes']">Recipes</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Shopping List</a>
+        <li class="nav-item"
+            routerLinkActive="active">
+          <a class="nav-link"
+             [routerLink]="['/shopping-list']">Shopping List</a>
         </li>
       </ul>
 
       <ul class="navbar-nav">
-        <div class="nav-item dropdown" rbDropdown>
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" aria-haspopup="true" aria-expanded="false">
+        <div class="nav-item dropdown"
+             rbDropdown>
+          <a class="nav-link dropdown-toggle"
+             href="#"
+             id="navbarDropdownMenuLink"
+             aria-haspopup="true"
+             aria-expanded="false">
               User
             </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">Login</a>
-            <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-menu"
+               aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item"
+               href="#">Login</a>
+            <a class="dropdown-item"
+               href="#">Another action</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Logout</a>
+            <a class="dropdown-item"
+               href="#">Logout</a>
           </div>
         </div>
       </ul>
