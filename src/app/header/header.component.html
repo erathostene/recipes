@@ -31,21 +31,17 @@
         <div class="nav-item dropdown"
              rbDropdown>
           <a class="nav-link dropdown-toggle"
-             href="#"
              id="navbarDropdownMenuLink"
              aria-haspopup="true"
              aria-expanded="false">
-              User
+              Recipe Management
             </a>
           <div class="dropdown-menu"
                aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item"
-               href="#">Login</a>
+               (click)="onStore()">Store recipes</a>
             <a class="dropdown-item"
-               href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item"
-               href="#">Logout</a>
+               (click)="onFetch()">Retrieve recipes</a>
           </div>
         </div>
       </ul>

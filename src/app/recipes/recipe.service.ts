@@ -1,8 +1,13 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Recipe } from './recipe';
 
+import { Headers, Http, Response } from '@angular/http';
+
+import 'rxjs/add/operator/map';
+
 @Injectable()
 export class RecipeService {
+  public recipeChanged = new EventEmitter<Recipe[]>();
   public recipeUpdate = new EventEmitter<Recipe>();
   private recipes: Recipe[] = [
     {
@@ -17,7 +22,7 @@ export class RecipeService {
       ingredients: []
     }
   ];
-  constructor() { }
+  constructor(private http: Http) { }
 
   getRecipes() {
     return this.recipes;
@@ -34,6 +39,24 @@ export class RecipeService {
   }
   editRecipe(oldRecipe: Recipe, newrecipe: Recipe) {
     this.recipes[this.recipes.indexOf(oldRecipe)] = newrecipe;
+  }
+  storeData() {
+    const body = JSON.stringify(this.recipes);
+    const headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    return this.http.put('https://recipebook-42a26.firebaseio.com/recipes.json', body, { headers: headers });
+  }
+  fetchData() {
+    return this.http
+      .get('https://recipebook-42a26.firebaseio.com/recipes.json')
+      .map((response: Response) => response.json())
+      .subscribe(
+      (data: Recipe[]) => {
+        this.recipes = data;
+        this.recipeChanged.emit(this.recipes);
+      }
+      );
   }
 }
 

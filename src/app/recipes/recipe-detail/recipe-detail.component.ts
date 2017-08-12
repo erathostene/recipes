@@ -13,9 +13,9 @@ import { Subject } from 'rxjs/Subject';
   templateUrl: './recipe-detail.component.html',
 })
 export class RecipeDetailComponent implements OnInit, OnDestroy {
-  private selectedRecipe: Recipe;
-  private recipeIndex: number;
-  private ngUnsubscribe: Subject<void> = new Subject<void>();
+  public selectedRecipe: Recipe;
+  recipeIndex: number;
+  ngUnsubscribe: Subject<void> = new Subject<void>();
 
   constructor(private recipeService: RecipeService,
     private sls: ShoppingListService,

@@ -31,7 +31,7 @@ import { RecipesModule } from './recipes/recipes.module';
     RoutingModule,
     RecipesModule
   ],
-  providers: [RecipeService, ShoppingListService],
+  providers: [ ShoppingListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

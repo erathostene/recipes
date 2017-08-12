@@ -8,8 +8,8 @@ import { ShoppingListService } from './shopping-list.service';
   templateUrl: './shopping-list.component.html',
 })
 export class ShoppingListComponent implements OnInit {
-  private ingredients: Ingredient[];
-  private selectedItem: Ingredient = null;
+  ingredients: Ingredient[];
+  selectedItem: Ingredient = null;
 
   constructor(private sls: ShoppingListService) { }
 

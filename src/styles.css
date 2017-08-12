@@ -8,3 +8,7 @@ body {
     margin: .25rem;
     cursor: pointer;
 }
+
+.dropdown-menu a {
+    cursor: pointer;
+}

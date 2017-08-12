@@ -9,7 +9,7 @@ import { ShoppingListService } from '../shopping-list.service';
 export class ShoppingListAddComponent implements OnChanges {
   @Input() item: Ingredient;
   @Output() cleared = new EventEmitter();
-  private isAdd = true;
+  isAdd = true;
 
   constructor(private sls: ShoppingListService) { }
 
