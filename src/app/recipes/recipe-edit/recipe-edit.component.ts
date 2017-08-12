@@ -16,10 +16,12 @@ import { Recipe } from '../recipe';
 })
 export class RecipeEditComponent implements OnInit, OnDestroy {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
-  private recipeIndex: number;
-  private recipe: Recipe = null;
-  private isNew = true;
+  recipeIndex: number;
+  recipe: Recipe = null;
+  isNew = true;
   recipeForm: FormGroup;
+  recipeIngredients: FormArray = new FormArray([]);
+
 
   constructor(private route: ActivatedRoute,
     private recipeService: RecipeService,
@@ -55,12 +57,11 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
     let recipeName = '';
     let recipeImageUrl = '';
     let recipeContent = '';
-    const recipeIngredients: FormArray = new FormArray([]);
 
     if (!this.isNew) {
       this.recipe.ingredients = this.recipe.ingredients || [];
       for (let i = 0; i < this.recipe.ingredients.length; i++) {
-        recipeIngredients.push(
+        this.recipeIngredients.push(
           new FormGroup({
             name: new FormControl(this.recipe.ingredients[i].name, Validators.required),
             amount: new FormControl(this.recipe.ingredients[i].amount, [Validators.required, Validators.pattern('\\d+')])
@@ -76,7 +77,7 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
       name: [recipeName, Validators.required],
       imagePath: [recipeImageUrl, Validators.required],
       description: [recipeContent, Validators.required],
-      ingredients: recipeIngredients
+      ingredients: this.recipeIngredients
     });
   }
   onSubmit() {
@@ -89,7 +90,7 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
     this.navigateBack();
   }
   onAddItem(name: string, amount: string) {
-    (<FormArray>this.recipeForm.controls['ingredients']).push(
+    this.recipeIngredients.push(
       new FormGroup({
         name: new FormControl(name, Validators.required),
         amount: new FormControl(amount, [Validators.required, Validators.pattern('\\d+')])
@@ -97,6 +98,6 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
     );
   }
   onRemoveItem(index: number) {
-    (<FormArray>this.recipeForm.controls['ingredients']).removeAt(index);
+    this.recipeIngredients.removeAt(index);
   }
 }
